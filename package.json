@@ -1,6 +1,6 @@
 {
   "name": "aliyun-oss-deploy-with-remove",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "An aliyun oss deploy tool, deleteObject, putObject and putStream are all supported.",
   "main": "index.js",
   "scripts": {
