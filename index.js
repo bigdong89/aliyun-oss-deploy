@@ -37,7 +37,7 @@ const deployGenerator = function* (filePath, config, prefix, byStream, removePat
   if (removePath) {
     // const result = yield co(client.delete(removePath));
     // r.push(result);
-    const list = yield co(client.list({ prefix: removePath }));
+    const list = yield co(client.list({ "prefix": removePath, "max-keys": 1000 }));
     list.objects = list.objects || [];
     for(const file of list.objects) {
       const result = yield co(client.delete(file));
