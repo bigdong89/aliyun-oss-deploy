@@ -5,3 +5,4 @@ coverage
 _test
 .aliossrc
 test.js
+.git/

@@ -23,6 +23,11 @@ const argv = require('yargs')
     type: 'string',
     alias: 'prefix',
   })
+  .option('r', {
+    describe: 'Set the remote removing dir of upload',
+    type: 'string',
+    alias: 'removePath',
+  })
   .option('c', {
     describe: 'Set your .aliossrc file path or JSON string',
     type: 'string',
@@ -63,6 +68,6 @@ assert(ossConfig.accessKeyId, `accessKeyId is required in ${aliossrc}.`);
 assert(ossConfig.accessKeySecret, `accessKeySecret is required in ${aliossrc}.`);
 assert(ossConfig.bucket, `bucket is required in ${aliossrc}.`);
 
-const dg = deployGenerator(argv.filePath, ossConfig, argv.prefix, argv.useStream);
+const dg = deployGenerator(argv.filePath, ossConfig, argv.prefix, argv.useStream, argv.removePath);
 
 log(dg);

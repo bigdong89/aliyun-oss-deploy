@@ -1,7 +1,7 @@
 {
-  "name": "aliyun-oss-deploy",
-  "version": "0.1.5",
-  "description": "An aliyun oss deploy tool, putObject and putStream are all supported.",
+  "name": "aliyun-oss-deploy-with-remove",
+  "version": "0.1.6",
+  "description": "An aliyun oss deploy tool, deleteObject, putObject and putStream are all supported.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hustcc/aliyun-oss-deploy.git"
+    "url": "git+https://github.com/bigdong89/aliyun-oss-deploy.git"
   },
   "keywords": [
     "aliyun",
@@ -20,12 +20,12 @@
     "deploy",
     "cd"
   ],
-  "author": "hustcc",
+  "author": "bigdong89",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/hustcc/aliyun-oss-deploy/issues"
   },
-  "homepage": "https://github.com/hustcc/aliyun-oss-deploy#readme",
+  "homepage": "https://github.com/bigdong89/aliyun-oss-deploy#readme",
   "dependencies": {
     "ali-oss": "^5.2.0",
     "chalk": "^2.4.2",

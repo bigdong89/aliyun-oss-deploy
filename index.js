@@ -19,8 +19,9 @@ const fileList = filePath =>
  * @param config
  * @param prefix
  * @param byStream
+ * @param removePath
  */
-const deployGenerator = function* (filePath, config, prefix, byStream) {
+const deployGenerator = function* (filePath, config, prefix, byStream, removePath) {
   filePath = filePath && path.resolve(filePath);
   prefix = prefix || '';
 
@@ -32,6 +33,19 @@ const deployGenerator = function* (filePath, config, prefix, byStream) {
 
   const r = [];
 
+  // remove remote path
+  if (removePath) {
+    // const result = yield co(client.delete(removePath));
+    // r.push(result);
+    const list = yield co(client.list({ prefix: removePath }));
+    list.objects = list.objects || [];
+    for(const file of list.objects) {
+      const result = yield co(client.delete(file));
+      r.push(result);
+    }
+  }
+
+  // upload files
   for (const file of files) {
     const ossTarget = path.join(prefix, file);
     // stream
@@ -53,9 +67,10 @@ const deployGenerator = function* (filePath, config, prefix, byStream) {
  * @param config aliyun oss 配置内容
  * @param prefix 上传到 oss 的批量文件前缀，可以用于做版本号
  * @param byStream 默认是 putObject
+ * @param removePath 要移除的远端路径，用于处理清除无法覆盖掉的上次版本文件
  */
-module.exports = async (filePath, config, prefix, byStream) => {
-  return await co(deployGenerator(filePath, config, prefix, byStream));
+module.exports = async (filePath, config, prefix, byStream, removePath) => {
+  return await co(deployGenerator(filePath, config, prefix, byStream, removePath));
 };
 
 module.exports.deployGenerator = deployGenerator;
